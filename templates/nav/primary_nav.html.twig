@@ -1,0 +1,11 @@
+<div class="mb-3 nav-admin">
+		You are {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+</div>
+<div id="admin-nav">
+	<div class="user-add">
+			<a href="/admin" class="{{ path(app.request.attributes.get('_route'))=='/admin' ? 'show btn add  btn-outline-primary' :'btn add  btn-outline-primary' }}">Admin Panel</a>
+	</div>
+	<div class="user-add">
+			<a href="/register" class="{{ path(app.request.attributes.get('_route'))=='/register' ? 'show btn add  btn-outline-primary' :'btn add  btn-outline-primary' }}">Add user</a>
+	</div>
+</div>

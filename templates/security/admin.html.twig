@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin Panel !{% endblock %}
+
+{% block body %}
+
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    {% if app.user %}
+        {{include('nav/primary_nav.html.twig')}}
+        
+        
+        <div id="wrap-list">
+            <div class="title">List of users</div>
+            <ul class="listof">
+            {% for user in users %}
+                    <li>
+                        <div>
+                            {{user.firstName}} {{user.lastName}} - {{user.email}}
+                            <div class="btn modif btn-outline-primary">Modify</div>
+                        </div>
+                        <div class="forms">
+                            <form action="admin/userupd" method="POST">
+                                <input type="hidden" value="{{user.id}}" name="user_id"/>
+                                <input type="text" value="{{user.lastName}}" name="lastName"/>
+                                <input type="text" value="{{user.firstName}}" name="firstName"/>
+                                <input type="text" value="{{user.email}}" name="email"/>
+                                <button class="btn btn-success">submit</button>
+                            </form>
+                        </div>
+                    </li>
+            {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+{% endblock %}

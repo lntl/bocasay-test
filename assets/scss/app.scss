@@ -1,0 +1,144 @@
+.nav-admin {
+    position: absolute;
+    right: 0;
+    padding: 10px;
+    border: 1px solid #0d6efd;
+    border-top: 0;
+    border-right: 0;
+    border-radius: 0px 0px 0px 3px;
+}
+.title {
+    font-size: 2rem;
+}
+.btn.add {
+    border-top: 0;
+    border-left: 0;
+    border-radius: 0px 0px 3px 0px;
+}
+.btn{
+    font-size: 0.8rem;
+}
+.user-add label {
+    padding-right: 15px;
+}
+.forms{
+    visibility: hidden;
+    opacity: 0;
+    z-index: -1;
+    transition: 0.3s;
+    padding: 10px 0;
+    position: absolute;
+    background: #fff;
+    display: flex;
+    text-align: center;
+    justify-content: space-around;
+}
+.listof {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.forms.show{
+    position: relative;
+    visibility: visible;
+    opacity: 1;
+    z-index: 1;
+}
+#wrap-list .forms {
+    margin-top: 20px;
+}
+.listof li {
+    border-bottom: 1px solid #ccc;
+    position: relative;
+    padding-bottom: 9px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+.user-add .forms {
+    width: fit-content;
+    padding: 35px;
+}
+.add {
+    width: fit-content;
+}
+.user-add div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#wrap-list{
+    width: 80vw;
+    margin: 0 auto;
+}
+.btn.modif {
+    position: absolute;
+    right: 0;
+}
+#wrap-list {
+    width: 80vw;
+    margin: 0 auto;
+    margin-top: 60px;
+}
+.rel{
+    position: relative;
+}
+.rel ul li{
+    position: absolute;
+}
+.wrap-log {
+    width: 80vw;
+    background: aliceblue;
+    max-width: 400px;
+    margin: 0 auto;
+}
+.justify-content-between ul {
+    display: none;
+}
+.wrap-log {
+    width: 80vw;
+    background: aliceblue;
+    max-width: 400px;
+    margin: 0 auto;
+    border-radius: 3px;
+    padding: 5px 18px;
+}
+input {
+    border: 1px solid #ccc;
+    margin: 5px;
+    width: calc(100% - 5px) !important;
+    border-radius: 3px;
+}
+.addusr {
+    margin: 0 auto;
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+}
+.full div{
+    width: 100%;
+}
+#admin-nav{
+    display: flex;
+}
+.role div {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+select#registration_form_roles {
+    width: 100%;
+    height: 45px;
+    overflow: auto;
+}
+.btn-outline-primary.show {
+    color: #fff;
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+#login{
+    margin-top: calc(50%);
+}
+#login button.btn.btn-lg.btn-primary {
+    width: 100%;
+    margin-top: 10px;
+}
