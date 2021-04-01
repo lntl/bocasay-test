@@ -21,8 +21,16 @@ class RegistrationFormType extends AbstractType
         $roles = $this->getParent('security.role_hierarchy.roles');
         $builder
             ->add('email')
-            ->add('firstName', TextType::class)
-            ->add('lastName', TextType::class)
+            ->add('firstName', TextType::class, 
+                array('attr' => array(
+                    'placeholder' => 'First name'
+                ))
+            )
+            ->add('lastName', TextType::class, 
+                array('attr' => array(
+                    'placeholder' => 'Last name'
+                ))
+            )
             ->add('roles', ChoiceType::class, array(
                 'choices' => 
                 array

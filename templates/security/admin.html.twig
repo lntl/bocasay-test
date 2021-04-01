@@ -3,15 +3,11 @@
 {% block title %}Admin Panel !{% endblock %}
 
 {% block body %}
-
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
-
     {% if app.user %}
         {{include('nav/primary_nav.html.twig')}}
-        
-        
         <div id="wrap-list">
             <div class="title">List of users</div>
             <ul class="listof">

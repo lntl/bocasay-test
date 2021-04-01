@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 use App\Repository\UserRepository;
 
@@ -32,11 +33,7 @@ class SecurityController extends AbstractController
         if(in_array("ROLE_ADMIN", $this->getUser()->getRoles())) {
             return $this->redirectToRoute('admin');
         } else {
-            //KEY XRzakcjhzwZhbX6p
-            var_dump($this->getUser());
-            //return $this->redirectToRoute('admin');
-            //RETURN JWT
-            //return $this->render('security/admin.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
+            return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
         }
     }
 
