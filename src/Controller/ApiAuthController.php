@@ -88,26 +88,37 @@ class ApiAuthController extends AbstractController
         8FihJYxQMPM4HfzDrK8bzizRTVWWCrmfP+1LDdJi9PfgMwhl3UplltzAjpPY
         -----END RSA PRIVATE KEY-----
         EOD;
- 
-        $user = $this->getDoctrine()->getRepository(User::class)->findOneBy([
-            'email' => $_POST['email']
-        ]);
         
-        if($user){
-            if($encoder->isPasswordValid($user, $_POST['password'])){
-                $payload = [
-                    'firstname' => $user->getFirstName(),
-                    'lastname' => $user->getLastName(),
-                    'roles'=> $user->getRoles(),
-                ];
-                
-                $jwt = JWT::encode($payload, $privateKey, 'RS256');
+        if(!empty($_POST["email"])){
+            $user = $this->getDoctrine()->getRepository(User::class)->findOneBy([
+                'email' => $_POST['email']
+            ]);
+            
+            if($user){
+                if($encoder->isPasswordValid($user, $_POST['password'])){
+                    $payload = [
+                        'id' => $user->getId(),
+                        'firstname' => $user->getFirstName(),
+                        'lastname' => $user->getLastName(),
+                        'roles'=> $user->getRoles(),
+                    ];
+                    
+                    $jwt = JWT::encode($payload, $privateKey, 'RS256');
+                    return new JsonResponse([
+                        'jwt' => $jwt,
+                    ]);
+                }
+            } else {
                 return new JsonResponse([
-                    'jwt' => $jwt,
+                    'jwt' => "false",
                 ]);
             }
         } else {
-            return false;
+            $jwt = JWT::decode($_GET['jwt'], $publicKey, array('RS256'));
+            return new JsonResponse([
+                'jwt' => $jwt,
+            ]);
         }
+        
     }
 }
